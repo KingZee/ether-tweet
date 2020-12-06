@@ -1,0 +1,22 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: TweetRegistry
+    network: mainnet
+    source:
+      address: "0xe0f278b72097e563b09d7dc94c6f75aff5e83298"
+      abi: TweetRegistry
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.2
+      language: wasm/assemblyscript
+      entities:
+
+      abis:
+        - name: TweetRegistry
+          file: ./abis/TweetRegistry.json
+      eventHandlers:
+
+      file: ./src/mapping.ts
