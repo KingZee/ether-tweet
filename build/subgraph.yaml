@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: TweetRegistry
@@ -18,7 +18,7 @@ dataSources:
         - Account
       abis:
         - name: TweetRegistry
-          file: ./abis/TweetRegistry.json
+          file: TweetRegistry\abis\TweetRegistry.json
       callHandlers:
         - function: adminSetRegistrationDisabled(bool)
           handler: handleSetRegistration
@@ -30,7 +30,7 @@ dataSources:
           handler: handleUnregister
         - function: adminUnregister(string)
           handler: handleAdminUnregister
-      file: ./src/core.ts
+      file: TweetRegistry\TweetRegistry.wasm
 templates:
   - kind: ethereum/contract
     name: TweetAccount
@@ -41,12 +41,12 @@ templates:
       kind: ethereum/events
       apiVersion: 0.0.3
       language: wasm/assemblyscript
-      file: ./src/tweet.ts
+      file: templates\TweetAccount\TweetAccount.wasm
       entities:
         - Tweet
       abis:
         - name: TweetAccount
-          file: ./abis/TweetAccount.json
+          file: TweetAccount\abis\TweetAccount.json
       callHandlers:
         - function: tweet(string)
           handler: handleTweet
